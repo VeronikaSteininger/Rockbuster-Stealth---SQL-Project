@@ -23,3 +23,7 @@ film inventory, customers, and payments, among other things
 ● pgAdmin4
 ● PostgreSQL
 ● Tableau Public
+
+
+
+
