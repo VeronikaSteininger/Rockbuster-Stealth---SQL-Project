@@ -1,0 +1,105 @@
+# Query for total amount payed by 5 top customers
+
+SELECT  
+A.customer_id, 
+A.first_name, 
+A.last_name, 
+C.city,
+D.country,  
+SUM (amount) AS total_amount_paid
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_ID = D.country_ID
+INNER JOIN payment E ON A.customer_id = E.customer_id
+WHERE city IN('Aurora', 'Atlixco', 'Xintai','Adoni', 'Dhule (Dhulia)''Kurashiki', 'Pingxiang', 'Sivas','Celaya','So Leopoldo')
+GROUP BY A.customer_id, A.first_name, A.last_name, C.city, D.country
+ORDER BY total_amount_paid DESC
+LIMIT 5
+
+
+# Query for count of customer per country
+
+SELECT D.country,
+	   COUNT (customer_id) AS count_customer_id
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_ID = D.country_ID
+GROUP BY country
+ORDER BY count_customer_id DESC
+LIMIT 10
+
+
+# Query for count of customer per store
+
+SELECT 
+A.store_id,     
+C.city, 
+D. country,
+COUNT(customer.customer_id) AS customer_count 
+FROM store A 
+INNER JOIN address B ON A.address_id = B.address_id 
+INNER JOIN city C ON B.city_id = C.city_id 
+INNER JOIN country D ON C.country_id = D.country_id
+LEFT JOIN customer ON customer.store_id = A.store_id 
+GROUP BY      
+A.store_id, C.city, country
+ORDER BY customer_count DESC; 
+
+# Query for descriptive Statistics film table
+
+SELECT
+  (SELECT MIN(release_year) FROM film) AS min_release_year,
+  (SELECT MAX(release_year) FROM film) AS max_release_year,
+  (SELECT AVG(release_year) FROM film) AS avg_release_year,
+  (SELECT COUNT(release_year) FROM film) AS count_release_year,
+  (SELECT COUNT(*) FROM film) AS total_rows,
+  
+  (SELECT MIN(rental_duration) FROM film) AS min_rental_duration,
+  (SELECT MAX(rental_duration) FROM film) AS max_rental_duration,
+  (SELECT AVG(rental_duration) FROM film) AS avg_rental_duration,
+  
+  (SELECT MIN(rental_rate) FROM film) AS min_rental_rate,
+  (SELECT MAX(rental_rate) FROM film) AS max_rental_rate,
+  (SELECT AVG(rental_rate) FROM film) AS avg_rental_rate,
+  
+  (SELECT MIN(length) FROM film) AS min_length,
+  (SELECT MAX(length) FROM film) AS max_length,
+  (SELECT AVG(length) FROM film) AS avg_length,
+  
+  (SELECT MIN(replacement_cost) FROM film) AS min_replacement_cost,
+  (SELECT MAX(replacement_cost) FROM film) AS max_replacement_cost,
+  (SELECT AVG(replacement_cost) FROM film) AS avg_replacement_cost,
+  
+  (SELECT MIN(last_update) FROM film) AS min_last_update,
+  (SELECT MAX(last_update) FROM film) AS max_last_update;
+
+
+# Descriptive Statistic of film table
+
+SELECT
+  (SELECT MIN(release_year) FROM film) AS min_release_year,
+  (SELECT MAX(release_year) FROM film) AS max_release_year,
+  (SELECT AVG(release_year) FROM film) AS avg_release_year,
+  (SELECT COUNT(release_year) FROM film) AS count_release_year,
+  (SELECT COUNT(*) FROM film) AS total_rows,
+  
+  (SELECT MIN(rental_duration) FROM film) AS min_rental_duration,
+  (SELECT MAX(rental_duration) FROM film) AS max_rental_duration,
+  (SELECT AVG(rental_duration) FROM film) AS avg_rental_duration,
+  
+  (SELECT MIN(rental_rate) FROM film) AS min_rental_rate,
+  (SELECT MAX(rental_rate) FROM film) AS max_rental_rate,
+  (SELECT AVG(rental_rate) FROM film) AS avg_rental_rate,
+  
+  (SELECT MIN(length) FROM film) AS min_length,
+  (SELECT MAX(length) FROM film) AS max_length,
+  (SELECT AVG(length) FROM film) AS avg_length,
+  
+  (SELECT MIN(replacement_cost) FROM film) AS min_replacement_cost,
+  (SELECT MAX(replacement_cost) FROM film) AS max_replacement_cost,
+  (SELECT AVG(replacement_cost) FROM film) AS avg_replacement_cost,
+  
+  (SELECT MIN(last_update) FROM film) AS min_last_update,
+  (SELECT MAX(last_update) FROM film) AS max_last_update;
