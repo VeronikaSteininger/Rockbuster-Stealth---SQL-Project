@@ -10,18 +10,24 @@ and providing insights for different departments with data-related queries.
 The Rockbuster Stealth Management Board is interested in the following business questions:
 
 ● Which movies contributed the most/least to revenue gain?
+
 ● What was the average rental duration for all videos?
+
 ● Which countries are Rockbuster customers based in?
+
 ● Where are customers with a high lifetime value based?
+
 ● Do sales figures vary between geographic regions?
 
 # Data Set
 The data set contains information about Rockbuster’s
 film inventory, customers, and payments, among other things
 
-# Tools and Systemns
+# Tools and Systems
 ● pgAdmin4
+
 ● PostgreSQL
+
 ● Tableau Public
 
 
